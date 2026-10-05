@@ -262,14 +262,14 @@ app.use(errorHandler);
                         START
 ========================================================== */
 
-if (require.main === module) {
-    app.listen(env.PORT, () => {
-        console.log(`FinTack API running on http://localhost:${env.PORT}`);
-        console.log(`   env:  ${env.NODE_ENV}`);
-        console.log(`   mail: ${env.smtpConfigured ? "SMTP" : "console fallback"}`);
-        console.log(`   ai:   ${env.GEMINI_API_KEY ? "Gemini enabled" : "Gemini disabled"}`);
-        console.log(`   agent: http://localhost:${env.PORT}/api/agent`);
-    });
-}
+const PORT = Number(process.env.PORT) || env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`FinTack API running on port ${PORT}`);
+    console.log(`   env:  ${env.NODE_ENV}`);
+    console.log(`   mail: ${env.smtpConfigured ? "SMTP" : "console fallback"}`);
+    console.log(`   ai:   ${env.GEMINI_API_KEY ? "Gemini enabled" : "Gemini disabled"}`);
+});
+
 
 module.exports = app;
