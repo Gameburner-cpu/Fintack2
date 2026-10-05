@@ -9,7 +9,7 @@
         localStorage.setItem("fintack_api_base", "http://localhost:5000");
 ========================================================================== */
 
-const DEFAULT_ORIGIN = "https://fintack.onrender.com";
+const DEFAULT_ORIGIN = "https://fintack.getvoroa.com";
 
 function resolveOrigin() {
     const override = localStorage.getItem("fintack_api_base");
